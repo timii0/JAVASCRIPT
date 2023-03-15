@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function cipher (str){
+    
+    let alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
+    let offset = 13;
+    let alphabetArrayLength = alphabetArray.length;
+    let strArray = str.split("");
+    let result = [];
+
+    for(let x=0; x < strArray.length; x++){
+        let alphabetIndex = alphabetArray.indexOf(strArray[x].toLowerCase());
+        if(alphabetIndex === -1){
+            result.push(strArray[x]);
+        }
+        else if(alphabetArrayLength > (alphabetIndex + offset)){
+            result.push(alphabetArray[alphabetIndex + offset]);
+        }
+        else{
+            result.push(alphabetArray[(alphabetIndex + offset) - alphabetArrayLength]);
+        }
+    }
+    let finalResult = result.join("").toUpperCase();    
+    return finalResult;
+}
+
+console.log(cipher("SERR PBQR PNZC",));
+</script>
+</html>
