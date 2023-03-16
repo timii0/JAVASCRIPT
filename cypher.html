@@ -6,35 +6,203 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    body{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        background-color: rgb(65, 56, 85);
+        color: white;
+       }
+    main{
+        background-color: rgb(35, 20, 75);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 150px;
+        border: 3px solid transparent;
+        height: 300px;
+        width: 500px;
+        border-radius: 20px;
+    }
+    section{
+        /* background-color: rgb(43, 183, 226); */
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        
+        top: 100px;
+        width: 300px;
+        
+        /* border: 3px solid black; */
+        /* height: 300px;
+        width: 300px; */
+    }
+    label{
+       width: 100%;
+       font-weight: bold;
+       font-family: Georgia, 'Times New Roman', Times, serif;
+       font-size: larger;
+       margin-right: 10px;
+    }
+    input{
+        width: 300px;
+        height: 20px;
+        outline-style: none;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid white;
+        font-weight: bold;
+       font-family: Georgia, 'Times New Roman', Times, serif;
+       color: white;
+       font-size: larger;
+ }
+    button{
+        position: absolute;
+        height : 40px;
+        left: 25%;
+        top: 40px;
+       background-color: #333;
+       margin-top: 20px;
+       width: 150px;
+       color: red;
+       border-radius: 10px;
+       font-weight: bold;
+       font-family: Georgia, 'Times New Roman', Times, serif;
+       font-size: larger;
+
+    }
+
+    div{
+        position: absolute;
+        top: 200px;
+        left: 160px;
+        border: none;
+        border-bottom: 2px solid white;
+        font-weight: bold;
+       font-family: Georgia, 'Times New Roman', Times, serif;
+       font-size: larger;
+       background-color: transparent;
+       margin-top: 10px;
+      
+
+    }
+    button:hover{
+        position: absolute;
+        height : 40px;
+        left: 25%;
+        top: 40px;
+       background-color: rgb(65, 56, 85);
+       margin-top: 20px;
+       width: 150px;
+       color: #fff;
+       border-radius: 10px;
+       font-weight: bold;
+       font-family: Georgia, 'Times New Roman', Times, serif;
+       font-size: larger;
+
+    }
+    h2{
+        position: absolute;
+        top: 30px;
+       color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+         
+    }
+    /* h1:hover{
+        position: absolute;
+        top: 30px;
+        color: fuchsia;
+
+    } */
+   </style>
+    
 </head>
 <body>
+    <main>
+        <h2>Caesars's Cypher Decoder</h2>
+
+
+        <section>
+    
+            <label for="">Input Word</label> <br>
+             <input type="text" name="text" id="text"> <br>
+            <button>Decode</button>
+        </section>
+        <div>
+    
+        </div>
+    </main>
+
     
 </body>
 <script>
-    function cipher (str){
+     let  btn = document.querySelector('button')
+    let input = document.querySelector('input')
+      input.addEventListener('change',rot)
+     let div = document.querySelector('div')
+     let para = document.createElement('p')
+     div.appendChild(para)
+   
+
+
+
+//     function cipher (str){
     
-    let alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
-    let offset = 13;
-    let alphabetArrayLength = alphabetArray.length;
-    let strArray = str.split("");
-    let result = [];
+//     let alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
+//     let offset = 13;
+//     let alphabetArrayLength = alphabetArray.length;
+//     let strArray = str.split("");
+//     let result = [];
 
-    for(let x=0; x < strArray.length; x++){
-        let alphabetIndex = alphabetArray.indexOf(strArray[x].toLowerCase());
-        if(alphabetIndex === -1){
-            result.push(strArray[x]);
-        }
-        else if(alphabetArrayLength > (alphabetIndex + offset)){
-            result.push(alphabetArray[alphabetIndex + offset]);
-        }
-        else{
-            result.push(alphabetArray[(alphabetIndex + offset) - alphabetArrayLength]);
-        }
-    }
-    let finalResult = result.join("").toUpperCase();    
-    return finalResult;
-}
+//     for(let x=0; x < strArray.length; x++){
+//         let alphabetIndex = alphabetArray.indexOf(strArray[x].toLowerCase());
+//         if(alphabetIndex === -1){
+//             result.push(strArray[x]);
+//         }
+//         else if(alphabetArrayLength > (alphabetIndex + offset)){
+//             result.push(alphabetArray[alphabetIndex + offset]);
+//         }
+//         else{
+//             result.push(alphabetArray[(alphabetIndex + offset) - alphabetArrayLength]);
+//         }
+//     }
+//     let finalResult = result.join("").toUpperCase();    
+//     return finalResult;
+// }
+// console.log(cipher("SERR PBQR PNZC",));
+  
 
-console.log(cipher("SERR PBQR PNZC",));
+// let aph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+// let aph1 = aph.splice(0,13).split('')
+// let aph2 = aph.splice(13,aph.length).split('')
+
+     function rot(str) {
+        str = input.value
+        str = str.toUpperCase()
+        let aph1 = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
+        let aph2 = ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        let arr = []
+        let regex = /[a-z]/i
+        for (let x=0; x < str.length; x++){
+            if(regex.test(str[x])){
+                if(aph1.includes(str[x])){
+                    arr.push(aph2[aph1.indexOf(str[x])])
+                }
+                else {
+                    arr.push(aph1[aph2.indexOf(str[x])])
+                }
+            }
+            else{
+                arr.push(str[x])
+            }
+        }
+        para.textContent = arr.join('')
+
+     }
+       
+        
+
 </script>
 </html>

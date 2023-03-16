@@ -11,6 +11,7 @@
         display: flex;
         justify-content: center;
         background-color: rgb(65, 56, 85);
+        color: white;
        }
     main{
         background-color: rgb(35, 20, 75);
@@ -18,8 +19,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        top: 100px;
-        border: 3px solid black;
+        top: 150px;
+        border: 3px solid transparent;
         height: 300px;
         width: 500px;
         border-radius: 20px;
@@ -42,6 +43,7 @@
        font-weight: bold;
        font-family: Georgia, 'Times New Roman', Times, serif;
        font-size: larger;
+       margin-right: 10px;
     }
     input{
         width: 300px;
@@ -52,9 +54,9 @@
         border-bottom: 2px solid white;
         font-weight: bold;
        font-family: Georgia, 'Times New Roman', Times, serif;
+       color: white;
        font-size: larger;
-
-    }
+ }
     button{
         position: absolute;
         height : 40px;
@@ -73,13 +75,16 @@
 
     div{
         position: absolute;
-        top: 90px;
-        left: 25%;
+        top: 100px;
+        left: 60px;
         border: none;
         border-bottom: 2px solid white;
         font-weight: bold;
        font-family: Georgia, 'Times New Roman', Times, serif;
        font-size: larger;
+       background-color: transparent;
+       margin-top: 10px;
+      
 
     }
     button:hover{
@@ -97,11 +102,24 @@
        font-size: larger;
 
     }
+    h2{
+        position: absolute;
+        top: 30px;
+       color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+         
+    }
+    /* h1:hover{
+        position: absolute;
+        top: 30px;
+        color: fuchsia;
+
+    } */
    </style>
 </head>
 <body>
     <main>
-
+       <h2>Convert to Roman Numerals</h2> 
         <section>
     
             <label for="">Input Number</label> <br>
@@ -142,7 +160,7 @@
        num.length === 4 ? num = th[num[0]] + h[num[1]] + t[num[2]] + u[num[3]] : num.length === 3 ? num = h[num[0]] + t[num[1]] + u[num[2]] : num.length === 2 ?  num =t[num[0]] + u[num[1]] : num = u[num[0]]
        
        
-       para.textContent = num.toUpperCase()
+       para.textContent = ` ${input.value} = ${num.toUpperCase()}`
 }
    
   
